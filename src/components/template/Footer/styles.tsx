@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const FooterArea = styled('footer')`
+const Container = styled('footer')`
   grid-area: footer;
   display: flex;
   align-items: center;
@@ -11,4 +11,4 @@ const FooterArea = styled('footer')`
   box-shadow: ${({ theme }) => theme.effects.shadow};
 `
 
-export default FooterArea
+export default Container

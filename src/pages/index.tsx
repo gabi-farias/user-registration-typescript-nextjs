@@ -7,7 +7,7 @@ import Container from '../styles/pages/Container'
 import Footer from '../components/template/Footer'
 import Logo from '../components/template/Logo'
 import Nav from '../components/template/Nav'
-import Main from '../components/main/Main'
+import Home from '../components/main/Home'
 
 import { createMemoryHistory } from 'history'
 
@@ -16,7 +16,7 @@ const App = () => (
     <Container>
       <Logo />
       <Nav />
-      <Main />
+      <Home />
       <Footer />
     </Container>
   </Router>

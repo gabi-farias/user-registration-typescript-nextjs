@@ -1,4 +1,4 @@
-import Content from '../template/Content'
+import Content from '../../template/Content'
 
 const icon = 'home'
 

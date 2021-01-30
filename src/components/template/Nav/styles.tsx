@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const MenuArea = styled('aside')`
+const Container = styled('aside')`
   background-color: ${({ theme }) => theme.colors.bgDark};
   box-shadow: ${({ theme }) => theme.effects.shadow};
   grid-area: menu;
@@ -31,4 +31,4 @@ const MenuArea = styled('aside')`
     }
   }
 `
-export default MenuArea
+export default Container

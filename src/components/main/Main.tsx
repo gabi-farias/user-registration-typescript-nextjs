@@ -1,9 +1,9 @@
-import MainConetnt from '../template/MainContent'
+import Content from '../template/Content'
 
 const icon = 'home'
 
 const Main = () =>
-    <MainConetnt 
+    <Content 
         icon={icon}
         title={icon.replace(icon[0], icon[0].toUpperCase())}
         subtitle='React CRUD'>
@@ -11,6 +11,6 @@ const Main = () =>
         <hr />
         <p>System to exemplify the development of a CRUD
            with Next Js!</p>
-    </MainConetnt>
+    </Content>
 
 export default Main

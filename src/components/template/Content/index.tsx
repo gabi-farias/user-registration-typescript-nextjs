@@ -1,31 +1,31 @@
 import { ReactNode } from 'react'
 import PropTypes from 'prop-types'
 
-import Content from '../../styles/template/Content'
-import Header from './Header'
+import Container from './styles'
+import Header from '../Header'
 
-type MainContentProps = {
+type OwnProps = {
   icon: string
   title: string
   subtitle: string
   children: ReactNode
 }
 
-const MainContent: React.FC<MainContentProps> = props => {
+const Content: React.FC<OwnProps> = props => {
   const { icon, title, subtitle, children } = props
 
   return (
     <>
       <Header icon={icon} title={title} subtitle={subtitle} />
-      <Content className="conatiner-fluid">
-        <div className="p-3 mt-5">{children}</div>
-      </Content>
+      <Container className='container-fluid'>
+        <div className='p-3 mt-5'>{children}</div>
+      </Container>
     </>
   )
 }
 
-MainContent.propTypes = {
+Content.propTypes = {
   children: PropTypes.node.isRequired
 }
 
-export default MainContent
+export default Content

@@ -1,10 +1,10 @@
-import MenuArea from '../../styles/template/MenuArea'
-import MenuLink from './MenuLink'
+import Container from './styles'
+import MenuLink from '../MenuLink'
 
 const lp1 = 'home', lp2 = 'users'
 
 const Nav: React.FC = () => (
-  <MenuArea>
+  <Container>
     <nav>
       <MenuLink
         icon={lp1}
@@ -17,7 +17,7 @@ const Nav: React.FC = () => (
         link={lp2}
       />
     </nav>
-  </MenuArea>
+  </Container>
 )
 
 export default Nav

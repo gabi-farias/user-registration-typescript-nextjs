@@ -1,9 +1,9 @@
-import Conatiner from './styles'
+import Container from './styles'
 
 const color = 'text-danger'
 
 const Footer: React.FC = () =>
-  <Conatiner>
+  <Container>
     <span>
       Developed with <i className={`fa fa-heart ${color}`} /> by
       <strong>
@@ -11,6 +11,6 @@ const Footer: React.FC = () =>
         <span className={`${color}`}> L</span>opes
       </strong>
     </span>
-  </Conatiner>
+  </Container>
 
 export default Footer

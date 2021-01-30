@@ -1,3 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'font-awesome/css/font-awesome.min.css'
+
 import { AppProps } from 'next/app'
 
 import { ThemeProvider } from 'styled-components'

@@ -1,12 +1,12 @@
-import LogoArea from '../../styles/template/LogoArea'
-import logo from '../../assets/logo.png'
+import Container from './styles'
+import logo from '../../../assets/logo.png'
 import { Link } from 'react-router-dom'
 
 const Logo: React.FC = () =>
-    <LogoArea>
-        <Link to="/">
+    <Container>
+        <Link to='/'>
             <img src={logo} alt='logo' />
         </Link>
-    </LogoArea>
+    </Container>
 
 export default Logo

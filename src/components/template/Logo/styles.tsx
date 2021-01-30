@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Container = styled('aside')`
+const LogoArea = styled('aside')`
   grid-area: logo;
   background-color: ${({ theme }) => theme.colors.bgDark};
   display: flex;
@@ -18,4 +18,4 @@ const Container = styled('aside')`
     }
   } */
 `
-export default Container
+export default LogoArea

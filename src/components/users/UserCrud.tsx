@@ -11,7 +11,7 @@ type OwnProps = {
 
 type OwnSate = {
   user: User
-  list: User[]
+  usersList: User[]
 }
 
 const icon = 'users'
@@ -21,7 +21,7 @@ const headerProps: OwnProps = { icon, title }
 
 const initialState: OwnSate = {
   user: { name: '', email: '' },
-  list: []
+  usersList: []
 }
 
 
@@ -33,7 +33,7 @@ export default class UserCrud extends Component {
 
   componentWillMount() {
       axios(baseUrl).then(resp => {
-          this.setState({ list: resp.data })
+          this.setState({ usersList: resp.data })
       })
   }
 
@@ -47,15 +47,15 @@ export default class UserCrud extends Component {
       const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
       axios[method](url, user)
           .then(resp => {
-              const list = this.getUpdatedList(resp.data)
-              this.setState({ user: initialState.user, list })
+              const usersList = this.getUpdatedList(resp.data)
+              this.setState({ user: initialState.user, usersList })
           })
   }
 
   getUpdatedList(user, add = true) {
-      const list = this.state.list.filter(u => u.id !== user.id)
-      if(add) list.unshift(user)
-      return list
+      const usersList = this.state.usersList.filter(u => u.id !== user.id)
+      if(add) usersList.unshift(user)
+      return usersList
   }
 
   updateField(event) {
@@ -115,8 +115,8 @@ export default class UserCrud extends Component {
 
   remove(user: User) {
       axios.delete(`${baseUrl}/${user.id}`).then(resp => {
-          const list = this.getUpdatedList(user, false)
-          this.setState({ list })
+          const usersList = this.getUpdatedList(user, false)
+          this.setState({ usersList })
       })
   }
 
@@ -127,8 +127,8 @@ export default class UserCrud extends Component {
                   <tr>
                       <th>ID</th>
                       <th>Nome</th>
-                      <th>E-mail</th>
-                      <th>Ações</th>
+                      <th>Email</th>
+                      <th>Action</th>
                   </tr>
               </thead>
               <tbody>
@@ -139,7 +139,7 @@ export default class UserCrud extends Component {
   }
 
   renderRows() {
-      return this.state.list.map(user => {
+      return this.state.usersList.map(user => {
           return (
               <tr key={user.id}>
                   <td>{user.id}</td>

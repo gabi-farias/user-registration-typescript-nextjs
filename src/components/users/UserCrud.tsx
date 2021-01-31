@@ -96,12 +96,12 @@ export default class UserCrud extends Component {
                   <div className="col-12 d-flex justify-content-end">
                       <button className="btn btn-primary"
                           onClick={e => this.save()}>
-                          Salvar
+                          Save
                       </button>
 
                       <button className="btn btn-secondary ml-2"
                           onClick={e => this.clear()}>
-                          Cancelar
+                          Cancel
                       </button>
                   </div>
               </div>
@@ -109,11 +109,11 @@ export default class UserCrud extends Component {
       )
   }
 
-  load(user) {
+  load(user: User) {
       this.setState({ user })
   }
 
-  remove(user) {
+  remove(user: User) {
       axios.delete(`${baseUrl}/${user.id}`).then(resp => {
           const list = this.getUpdatedList(user, false)
           this.setState({ list })

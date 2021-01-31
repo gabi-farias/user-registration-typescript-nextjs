@@ -5,11 +5,6 @@ import axios from 'axios'
 
 const baseUrl = 'http://localhost:3001/users'
 
-const api = async () => {
-  const resp = await axios(baseUrl)
-  const users = resp.data
-
-  return { users }
-}
+const api = async () => await axios(baseUrl)
 
 export default api

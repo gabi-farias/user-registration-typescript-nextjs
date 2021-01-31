@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { User } from '../../../util'
-
-import api from '../../server/api'
+import React, { Component, useState } from 'react'
 
 import Content from '../template/Content'
+import { User } from '../../../util'
+import api from '../../server/api'
+
 
 type OwnProps = {
   icon: string
@@ -28,9 +28,15 @@ const initialState: OwnSate = {
 export default class UserCrud extends Component<OwnProps, OwnSate> {
   state = { ...initialState }
 
-  componentWillMount() {}
+  componentWillMount() {
+    api().then(resp => {
+      this.setState({ usersList: resp.data })
+    })
+  }
 
-  clear() {}
+  clear() {
+    this.setState({ user: initialState.user })
+  }
 
   save() {}
 
@@ -49,6 +55,16 @@ export default class UserCrud extends Component<OwnProps, OwnSate> {
   renderRows() {}
 
   render() {
-    return <Content {...headerProps}>User Registration</Content>
+    return (
+      <Content {...headerProps}>
+        <div>
+          {this.state.usersList.map(user => (
+            <h1 className="d-flex justify-content-center" key={user.id}>
+              {user.name}
+            </h1>
+          ))}
+        </div>
+      </Content>
+    )
   }
 }

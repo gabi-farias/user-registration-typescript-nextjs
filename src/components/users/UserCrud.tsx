@@ -1,70 +1,54 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import Main from '../template/Content'
+import { User } from '../../../util'
 
-const headerProps = {
-    icon: 'users',
-    title: 'Users',
-    subtitle: 'User registration: Include, List, Change and Delete!'
+import api from '../../server/api'
+
+import Content from '../template/Content'
+
+type OwnProps = {
+  icon: string
+  title: string
 }
 
-const baseUrl = 'http://localhost:3001/users'
-
-const initialState = {
-    user: { name: '', email: '' },
-    list: []
+type OwnSate = {
+  user: User
+  usersList: User[]
 }
 
-type User = {
-    name: string,
-    email: string
+const icon = 'users'
+const title = icon.replace(icon[0], icon[0].toUpperCase())
+
+const headerProps: OwnProps = { icon, title }
+
+const initialState: OwnSate = {
+  user: { name: '', email: '' },
+  usersList: []
 }
 
-export default class UserCrud extends Component {
+export default class UserCrud extends Component<OwnProps, OwnSate> {
+  state = { ...initialState }
 
-    state = { ...initialState }
+  componentWillMount() {}
 
-    componentWillMount() {
+  clear() {}
 
-    }
+  save() {}
 
-    clear() {
+  getUpdatedList(user: User, add = true) {}
 
-    }
+  updateField(event: unknown) {}
 
-    save() {
+  renderForm() {}
 
-    }
+  load(user: User) {}
 
-    getUpdatedList(user: User, add = true) {
+  remove(user: User) {}
 
-    }
+  renderTable() {}
 
-    updateField(event: unknown) {
+  renderRows() {}
 
-    }
-
-    renderForm() {
-
-    }
-
-    load(user: User) {
-
-    }
-
-    remove(user: User) {
-
-    }
-
-    renderTable() {
-
-    }
-
-    renderRows() {
-
-    }
-
-    // render() {
-
-    // }
+  render() {
+    return <Content {...headerProps}>User Registration</Content>
+  }
 }

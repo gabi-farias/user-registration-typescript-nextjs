@@ -25,3 +25,21 @@ const Home = () => (
 )
 
 export default Home
+
+// type OwnProps = {
+//   users: [
+//     user: {
+//       id: number
+//       name: string
+//       email: string
+//     }
+//   ]
+// }
+
+  // <div>
+  //   {users.map(user => (
+  //     <h1 className="d-flex justify-content-center" key={user.id}>
+  //       {user.email}
+  //     </h1>
+  //   ))}
+  // </div>

@@ -52,13 +52,13 @@ export default class UserCrud extends Component {
           })
   }
 
-  getUpdatedList(user, add = true) {
+  getUpdatedList(user: User, add = true) {
       const usersList = this.state.usersList.filter(u => u.id !== user.id)
       if(add) usersList.unshift(user)
       return usersList
   }
 
-  updateField(event) {
+  updateField(event: React.ChangeEvent<HTMLInputElement>) {
       const user = { ...this.state.user }
       user[event.target.name] = event.target.value
       this.setState({ user })
@@ -95,12 +95,12 @@ export default class UserCrud extends Component {
               <div className="row">
                   <div className="col-12 d-flex justify-content-end">
                       <button className="btn btn-primary"
-                          onClick={e => this.save()}>
+                          onClick={() => this.save()}>
                           Save
                       </button>
 
                       <button className="btn btn-secondary ml-2"
-                          onClick={e => this.clear()}>
+                          onClick={() => this.clear()}>
                           Cancel
                       </button>
                   </div>

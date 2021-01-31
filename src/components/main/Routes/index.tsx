@@ -1,6 +1,6 @@
 import { Switch, Route, Redirect } from 'react-router'
 
-import Home from '../Home'
+import Home from '../Main'
 import UserCrud from '../../users/UserCrud'
 
 const Routes: React.FC = () =>

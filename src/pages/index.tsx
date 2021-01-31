@@ -4,19 +4,19 @@ import Footer from '../components/template/Footer'
 import Container from '../styles/pages/Container'
 import Logo from '../components/template/Logo'
 import Nav from '../components/template/Nav'
-import Home from '../components/main/Home'
+import Main from '../components/main/Main'
 
 import { createMemoryHistory } from 'history'
 
-const App = () => (
+const Home = () => (
   <Router history={createMemoryHistory()}>
     <Container>
       <Logo />
       <Nav />
-      <Home />
+      <Main />
       <Footer />
     </Container>
   </Router>
 )
 
-export default App
+export default Home

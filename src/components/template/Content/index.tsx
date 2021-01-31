@@ -7,16 +7,15 @@ import Header from '../Header'
 type OwnProps = {
   icon: string
   title: string
-  subtitle: string
   children: ReactNode
 }
 
 const Content: React.FC<OwnProps> = props => {
-  const { icon, title, subtitle, children } = props
+  const { icon, title, children } = props
 
   return (
     <>
-      <Header icon={icon} title={title} subtitle={subtitle} />
+      <Header icon={icon} title={title} />
       <Container className='container-fluid'>
         <div className='p-3 mt-5'>{children}</div>
       </Container>

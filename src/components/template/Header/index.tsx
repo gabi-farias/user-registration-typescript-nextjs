@@ -1,13 +1,12 @@
 import Container from './styles'
 
-type OwnProps = { icon: string; title: string; subtitle: string }
+type OwnProps = { icon: string; title: string }
 
-const Header: React.FC<OwnProps> = ({ icon, title, subtitle }) => (
+const Header: React.FC<OwnProps> = ({ icon, title }) => (
   <Container className='d-none d-sm-flex flex-column'>
     <h1 className='mt-3'>
-        <i className={`fa fa-${icon}`} /> {title}
+      <i className={`fa fa-${icon}`} /> {title}
     </h1>
-    <p className='lead text-muted'>{subtitle}</p>
   </Container>
 )
 

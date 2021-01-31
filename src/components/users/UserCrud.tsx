@@ -70,11 +70,6 @@ export default class UserCrud extends Component<OwnProps, OwnSate> {
   }
 }
 
-
-// clear() {
-//   this.setState({ user: initialState.user })
-// }
-
 // save() {
 //   const user = this.state.user
 //   const method = user.id ? 'put' : 'post'

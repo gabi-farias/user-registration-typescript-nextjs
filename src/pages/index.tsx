@@ -10,6 +10,7 @@ import Main from '../components/main/Main'
 
 import { createMemoryHistory } from 'history'
 import Routes from '../components/main/Routes'
+import api from '../server/api'
 
 // const router = useRouter()
 
@@ -23,6 +24,8 @@ const Home = () => (
     </Container>
   </Router>
 )
+
+// Home.getInitialProps = api
 
 export default Home
 

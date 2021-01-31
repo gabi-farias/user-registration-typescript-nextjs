@@ -15,6 +15,7 @@ import api from '../server/api'
 // const router = useRouter()
 
 const Home = () => (
+  //@ts-ignore
   <BrowserRouter history={createMemoryHistory()}>
     <Container>
       <Logo />

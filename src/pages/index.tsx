@@ -1,4 +1,4 @@
-import { Router } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 // import { useRouter } from 'next/router'
 
@@ -15,14 +15,14 @@ import api from '../server/api'
 // const router = useRouter()
 
 const Home = () => (
-  <Router history={createMemoryHistory()}>
+  <BrowserRouter history={createMemoryHistory()}>
     <Container>
       <Logo />
       <Nav />
       <Routes />
       <Footer />
     </Container>
-  </Router>
+  </BrowserRouter>
 )
 
 // Home.getInitialProps = api

@@ -66,24 +66,24 @@ export default class UserCrud extends Component {
 
   renderForm() {
       return (
-          <div className="form">
-              <div className="row">
-                  <div className="col-12 col-md-6">
-                      <div className="form-group">
+          <div className='form'>
+              <div className='row'>
+                  <div className='col-12 col-md-6'>
+                      <div className='form-group'>
                           <label>Nome</label>
-                          <input type="text" className="form-control"
-                              name="name"
+                          <input type='text' className='form-control'
+                              name='name'
                               value={this.state.user.name}
                               onChange={e => this.updateField(e)}
                               placeholder="Type the user's name..." />
                       </div>
                   </div>
 
-                  <div className="col-12 col-md-6">
-                      <div className="form-group">
+                  <div className='col-12 col-md-6'>
+                      <div className='form-group'>
                           <label>E-mail</label>
-                          <input type="text" className="form-control"
-                              name="email"
+                          <input type='text' className='form-control'
+                              name='email'
                               value={this.state.user.email}
                               onChange={e => this.updateField(e)}
                               placeholder="Type the user's email..." />
@@ -92,14 +92,14 @@ export default class UserCrud extends Component {
               </div>
 
               <hr />
-              <div className="row">
-                  <div className="col-12 d-flex justify-content-end">
-                      <button className="btn btn-primary"
+              <div className='row'>
+                  <div className='col-12 d-flex justify-content-end'>
+                      <button className='btn btn-primary'
                           onClick={() => this.save()}>
                           Save
                       </button>
 
-                      <button className="btn btn-secondary ml-2"
+                      <button className='btn btn-secondary ml-2'
                           onClick={() => this.clear()}>
                           Cancel
                       </button>
@@ -114,7 +114,7 @@ export default class UserCrud extends Component {
   }
 
   remove(user: User) {
-      axios.delete(`${baseUrl}/${user.id}`).then(resp => {
+      axios.delete(`${baseUrl}/${user.id}`).then(() => {
           const usersList = this.getUpdatedList(user, false)
           this.setState({ usersList })
       })
@@ -122,7 +122,7 @@ export default class UserCrud extends Component {
 
   renderTable() {
       return (
-          <table className="table mt-4">
+          <table className='table mt-4'>
               <thead>
                   <tr>
                       <th>ID</th>
@@ -146,13 +146,13 @@ export default class UserCrud extends Component {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>
-                      <button className="btn btn-warning"
+                      <button className='btn btn-warning'
                           onClick={() => this.load(user)}>
-                          <i className="fa fa-pencil"></i>
+                          <i className='fa fa-pencil'></i>
                       </button>
-                      <button className="btn btn-danger ml-2"
+                      <button className='btn btn-danger ml-2'
                           onClick={() => this.remove(user)}>
-                          <i className="fa fa-trash"></i>
+                          <i className='fa fa-trash'></i>
                       </button>
                   </td>
               </tr>

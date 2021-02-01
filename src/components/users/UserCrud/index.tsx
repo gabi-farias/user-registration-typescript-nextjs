@@ -1,12 +1,12 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Content from '../../template/Content'
-import { User } from '../../../../util'
 import axios from 'axios'
 
-type OwnProps = {
-  icon: string
-  title: string
+type User = {
+  id?: number
+  name: string
+  email: string
 }
 
 type OwnSate = {
@@ -17,16 +17,16 @@ type OwnSate = {
 const icon = 'users'
 const title = icon.replace(icon[0], icon[0].toUpperCase())
 
-const headerProps: OwnProps = { icon, title }
+const headerProps = { icon, title }
 
-const initialState: OwnSate = {
+const initialState = {
   user: { name: '', email: '' },
   usersList: []
 }
 
 const baseUrl = 'http://localhost:3001/users'
 
-const UserCrud: React.FC<OwnProps> = () => {
+const UserCrud: React.FC = () => {
   const [state, setState] = useState<OwnSate>({ ...initialState })
 
   useEffect(() => {

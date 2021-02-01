@@ -10,18 +10,14 @@ type OwnProps = {
   children: ReactNode
 }
 
-const Content: React.FC<OwnProps> = props => {
-  const { icon, title, children } = props
-
-  return (
-    <>
-      <Header icon={icon} title={title} />
-      <Container className='container-fluid'>
-        <div className='p-3 mt-5'>{children}</div>
-      </Container>
-    </>
-  )
-}
+const Content: React.FC<OwnProps> = ({ icon, title, children }) => (
+  <>
+    <Header icon={icon} title={title} />
+    <Container className="container-fluid">
+      <div className="p-3 mt-5">{children}</div>
+    </Container>
+  </>
+)
 
 Content.propTypes = {
   children: PropTypes.node.isRequired

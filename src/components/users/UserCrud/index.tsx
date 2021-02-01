@@ -19,10 +19,8 @@ const title = icon.replace(icon[0], icon[0].toUpperCase())
 
 const headerProps = { icon, title }
 
-const initialState = {
-  user: { name: '', email: '' },
-  usersList: []
-}
+const usersList: User[] = []
+const initialState = { user: { name: '', email: '' }, usersList }
 
 const baseUrl = 'http://localhost:3001/users'
 

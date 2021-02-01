@@ -23,31 +23,4 @@ const Home = () => (
   </Router>
 )
 
-// Home.getInitialProps = api
-
 export default Home
-
-// type OwnProps = {
-//   users: [
-//     user: {
-//       id: number
-//       name: string
-//       email: string
-//     }
-//   ]
-// }
-
-// Home.getInitialProps = async () => {
-//   const resp = await axios(baseUrl)
-//   const users = resp.data
-
-//   return { users }
-// }
-
-// <div>
-//   {users.map(user => (
-//     <h1 className="d-flex justify-content-center" key={user.id}>
-//       {user.email}
-//     </h1>
-//   ))}
-// </div>

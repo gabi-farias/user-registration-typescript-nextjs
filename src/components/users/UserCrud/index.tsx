@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 
 import Content from '../../template/Content'
 import { User } from '../../../../util'
@@ -26,42 +26,40 @@ const initialState: OwnSate = {
 
 const baseUrl = 'http://localhost:3001/users'
 
-export default class UserCrud extends Component {
-  state = { ...initialState }
+const UserCrud: React.FC<OwnProps> = () => {
+  const [state, setState] = useState<OwnSate>({ ...initialState })
 
-  componentWillMount() {
+  useEffect(() => {
     axios(baseUrl).then(resp => {
-      this.setState({ usersList: resp.data })
+      setState({ ...state, usersList: resp.data })
     })
-  }
+  }, [])
 
-  clear() {
-    this.setState({ user: initialState.user })
-  }
+  const clear = () => setState({ ...state, user: initialState.user })
 
-  save() {
-    const user = this.state.user
+  const save = () => {
+    const user = state.user
     const method = user.id ? 'put' : 'post'
     const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
     axios[method](url, user).then(resp => {
-      const usersList = this.getUpdatedList(resp.data)
-      this.setState({ user: initialState.user, usersList })
+      const usersList = getUpdatedList(resp.data)
+      setState({ ...state, user: initialState.user, usersList })
     })
   }
 
-  getUpdatedList(user: User, add = true) {
-    const usersList = this.state.usersList.filter(u => u.id !== user.id)
+  const getUpdatedList = (user: User, add = true) => {
+    const usersList = state.usersList.filter(u => u.id !== user.id)
     if (add) usersList.unshift(user)
     return usersList
   }
 
-  updateField(event: React.ChangeEvent<HTMLInputElement>) {
-    const user = { ...this.state.user }
+  const updateField = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const user = { ...state.user }
     user[event.target.name] = event.target.value
-    this.setState({ user })
+    setState({ ...state, user })
   }
 
-  renderForm() {
+  const renderForm = () => {
     return (
       <div className="form">
         <div className="row">
@@ -72,8 +70,8 @@ export default class UserCrud extends Component {
                 type="text"
                 className="form-control"
                 name="name"
-                value={this.state.user.name}
-                onChange={e => this.updateField(e)}
+                value={state.user.name}
+                onChange={e => updateField(e)}
                 placeholder="Type the user's name..."
               />
             </div>
@@ -86,8 +84,8 @@ export default class UserCrud extends Component {
                 type="text"
                 className="form-control"
                 name="email"
-                value={this.state.user.email}
-                onChange={e => this.updateField(e)}
+                value={state.user.email}
+                onChange={e => updateField(e)}
                 placeholder="Type the user's email..."
               />
             </div>
@@ -97,14 +95,11 @@ export default class UserCrud extends Component {
         <hr />
         <div className="row">
           <div className="col-12 d-flex justify-content-end">
-            <button className="btn btn-primary" onClick={() => this.save()}>
+            <button className="btn btn-primary" onClick={() => save()}>
               Save
             </button>
 
-            <button
-              className="btn btn-secondary ml-2"
-              onClick={() => this.clear()}
-            >
+            <button className="btn btn-secondary ml-2" onClick={() => clear()}>
               Cancel
             </button>
           </div>
@@ -113,18 +108,16 @@ export default class UserCrud extends Component {
     )
   }
 
-  load(user: User) {
-    this.setState({ user })
-  }
+  const load = (user: User) => setState({ ...state, user })
 
-  remove(user: User) {
+  const remove = (user: User) => {
     axios.delete(`${baseUrl}/${user.id}`).then(() => {
-      const usersList = this.getUpdatedList(user, false)
-      this.setState({ usersList })
+      const usersList = getUpdatedList(user, false)
+      setState({ ...state, usersList })
     })
   }
 
-  renderTable() {
+  const renderTable = () => {
     return (
       <table className="table mt-4">
         <thead>
@@ -135,25 +128,25 @@ export default class UserCrud extends Component {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>{this.renderRows()}</tbody>
+        <tbody>{renderRows()}</tbody>
       </table>
     )
   }
 
-  renderRows() {
-    return this.state.usersList.map(user => {
+  const renderRows = () =>
+    state.usersList.map(user => {
       return (
         <tr key={user.id}>
           <td>{user.id}</td>
           <td>{user.name}</td>
           <td>{user.email}</td>
           <td>
-            <button className="btn btn-warning" onClick={() => this.load(user)}>
+            <button className="btn btn-warning" onClick={() => load(user)}>
               <i className="fa fa-pencil"></i>
             </button>
             <button
               className="btn btn-danger ml-2"
-              onClick={() => this.remove(user)}
+              onClick={() => remove(user)}
             >
               <i className="fa fa-trash"></i>
             </button>
@@ -161,52 +154,55 @@ export default class UserCrud extends Component {
         </tr>
       )
     })
-  }
 
-  render() {
-    return (
-      <Content {...headerProps}>
-        {this.renderForm()}
-        {this.renderTable()}
-      </Content>
-    )
-  }
+  console.log(state.usersList)
+
+  return (
+    <Content {...headerProps}>
+      {renderForm()}
+      {renderTable()}
+    </Content>
+  )
 }
 
-// const UserCrudHooks: React.FC<OwnProps> = props => {
-//   const [state, setState] = useState<OwnSate>({ ...initialState })
+export default UserCrud
 
-//   const componentWillMount = () => {
+// export default class UserCrud extends Component {
+//   state = { ...initialState }
+
+//   componentWillMount() {
 //     axios(baseUrl).then(resp => {
-//       setState({ ...state, usersList: resp.data })
+//       this.setState({ usersList: resp.data })
 //     })
 //   }
 
-//   const clear = () => setState({ ...state, user: initialState.user })
+//   clear() {
+//     this.setState({ user: initialState.user })
+//   }
 
-//   const save = () => {
-//     const user = state.user
+//   save() {
+//     const user = this.state.user
 //     const method = user.id ? 'put' : 'post'
 //     const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
 //     axios[method](url, user).then(resp => {
-//       const usersList = getUpdatedList(resp.data)
-//       setState({ ...state, user: initialState.user, usersList })
+//       const usersList = this.getUpdatedList(resp.data)
+//       this.setState({ user: initialState.user, usersList })
 //     })
 //   }
 
-//   const getUpdatedList = (user: User, add = true) => {
-//     const usersList = state.usersList.filter(u => u.id !== user.id)
+//   getUpdatedList(user: User, add = true) {
+//     const usersList = this.state.usersList.filter(u => u.id !== user.id)
 //     if (add) usersList.unshift(user)
 //     return usersList
 //   }
 
-//   const updateField = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     const user = { ...state.user }
+//   updateField(event: React.ChangeEvent<HTMLInputElement>) {
+//     const user = { ...this.state.user }
 //     user[event.target.name] = event.target.value
-//     setState({ ...state, user })
+//     this.setState({ user })
 //   }
 
-//   const renderForm = () => {
+//   renderForm() {
 //     return (
 //       <div className="form">
 //         <div className="row">
@@ -217,8 +213,8 @@ export default class UserCrud extends Component {
 //                 type="text"
 //                 className="form-control"
 //                 name="name"
-//                 value={state.user.name}
-//                 onChange={e => updateField(e)}
+//                 value={this.state.user.name}
+//                 onChange={e => this.updateField(e)}
 //                 placeholder="Type the user's name..."
 //               />
 //             </div>
@@ -231,8 +227,8 @@ export default class UserCrud extends Component {
 //                 type="text"
 //                 className="form-control"
 //                 name="email"
-//                 value={state.user.email}
-//                 onChange={e => updateField(e)}
+//                 value={this.state.user.email}
+//                 onChange={e => this.updateField(e)}
 //                 placeholder="Type the user's email..."
 //               />
 //             </div>
@@ -242,11 +238,14 @@ export default class UserCrud extends Component {
 //         <hr />
 //         <div className="row">
 //           <div className="col-12 d-flex justify-content-end">
-//             <button className="btn btn-primary" onClick={() => save()}>
+//             <button className="btn btn-primary" onClick={() => this.save()}>
 //               Save
 //             </button>
 
-//             <button className="btn btn-secondary ml-2" onClick={() => clear()}>
+//             <button
+//               className="btn btn-secondary ml-2"
+//               onClick={() => this.clear()}
+//             >
 //               Cancel
 //             </button>
 //           </div>
@@ -255,16 +254,18 @@ export default class UserCrud extends Component {
 //     )
 //   }
 
-//   const load = (user: User) => setState({ ...state, user })
+//   load(user: User) {
+//     this.setState({ user })
+//   }
 
-//   const remove = (user: User) => {
+//   remove(user: User) {
 //     axios.delete(`${baseUrl}/${user.id}`).then(() => {
-//       const usersList = getUpdatedList(user, false)
-//       setState({ ...state, usersList })
+//       const usersList = this.getUpdatedList(user, false)
+//       this.setState({ usersList })
 //     })
 //   }
 
-//   const renderTable = () => {
+//   renderTable() {
 //     return (
 //       <table className="table mt-4">
 //         <thead>
@@ -275,25 +276,25 @@ export default class UserCrud extends Component {
 //             <th>Action</th>
 //           </tr>
 //         </thead>
-//         <tbody>{renderRows()}</tbody>
+//         <tbody>{this.renderRows()}</tbody>
 //       </table>
 //     )
 //   }
 
-//   const renderRows = () =>
-//     state.usersList.map(user => {
+//   renderRows() {
+//     return this.state.usersList.map(user => {
 //       return (
 //         <tr key={user.id}>
 //           <td>{user.id}</td>
 //           <td>{user.name}</td>
 //           <td>{user.email}</td>
 //           <td>
-//             <button className="btn btn-warning" onClick={() => load(user)}>
+//             <button className="btn btn-warning" onClick={() => this.load(user)}>
 //               <i className="fa fa-pencil"></i>
 //             </button>
 //             <button
 //               className="btn btn-danger ml-2"
-//               onClick={() => remove(user)}
+//               onClick={() => this.remove(user)}
 //             >
 //               <i className="fa fa-trash"></i>
 //             </button>
@@ -301,15 +302,14 @@ export default class UserCrud extends Component {
 //         </tr>
 //       )
 //     })
+//   }
 
-//   console.log(state.usersList)
-
-//   return (
-//     <Content {...headerProps}>
-//       {renderForm()}
-//       {renderTable()}
-//     </Content>
-//   )
+//   render() {
+//     return (
+//       <Content {...headerProps}>
+//         {this.renderForm()}
+//         {this.renderTable()}
+//       </Content>
+//     )
+//   }
 // }
-
-// export default UserCrudHooks

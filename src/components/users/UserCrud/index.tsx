@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import Content from '../template/Content'
-import { User } from '../../../util'
+import Content from '../../template/Content'
+import { User } from '../../../../util'
 import axios from 'axios'
 
 type OwnProps = {

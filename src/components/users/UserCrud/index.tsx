@@ -9,16 +9,23 @@ type User = {
   email: string
 }
 
+type OwnState = {
+  user: User
+  usersList: User[]
+}
+
 const icon = 'users', title = icon.replace(icon[0], icon[0].toUpperCase())
 const headerProps = { icon, title }
 
-const user: User = { name: '', email: '' }, usersList: User[] = []
-const initialState = { user, usersList }
+const initialState = {
+  user: { name: '', email: '' },
+  usersList: []
+}
 
 const baseUrl = 'http://localhost:3001/users'
 
 const UserCrud: React.FC = () => {
-  const [state, setState] = useState({ ...initialState })
+  const [state, setState] = useState<OwnState>({ ...initialState })
 
   useEffect(() => {
     axios(baseUrl).then(resp => {

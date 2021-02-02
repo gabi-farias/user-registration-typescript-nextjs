@@ -16,7 +16,7 @@ const Conatiner = styled('div')`
   height: 100vh;
   background-color: #f5f5f5;
 
-  /* @media (max-width: 768px) {
+  @media (max-width: 768px) {
     grid-template-rows:
       ${({theme}) => theme.measures.headerHeight}px
       ${({theme}) => theme.measures.menuTopHeight}px
@@ -42,6 +42,6 @@ const Conatiner = styled('div')`
       'menu'
       'content'
       'footer';
-  } */
+  }
 `
 export default Conatiner

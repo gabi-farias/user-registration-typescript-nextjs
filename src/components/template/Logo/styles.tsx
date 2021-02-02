@@ -12,10 +12,10 @@ const LogoArea = styled('aside')`
     width: 100%;
   }
 
-  /* @media (max-width: 576px) {
+  @media (max-width: 576px) {
     a img {
       width: 325px;
     }
-  } */
+  }
 `
 export default LogoArea

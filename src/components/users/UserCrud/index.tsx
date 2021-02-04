@@ -6,13 +6,15 @@ import { User } from '../../../../util'
 import Content from '../../template/Content'
 import UserTable from '../UserTable'
 import UserForm from '../UserForm'
+import FormButton from '../UserForm/FormButton'
 
 type OwnState = {
   user: User
   usersList: User[]
 }
 
-const icon = 'users', title = icon.replace(icon[0], icon[0].toUpperCase())
+const icon = 'users',
+  title = icon.replace(icon[0], icon[0].toUpperCase())
 const headerProps = { icon, title }
 
 const initialState = {
@@ -91,13 +93,8 @@ const UserCrud: React.FC = () => {
         <hr />
         <div className="row">
           <div className="col-12 d-flex justify-content-end">
-            <button className="btn btn-primary" onClick={() => save()}>
-              Save
-            </button>
-
-            <button className="btn btn-secondary ml-2" onClick={() => clear()}>
-              Cancel
-            </button>
+            <FormButton color="primary" click={save} label="Save" />
+            <FormButton color="secondary" click={clear} label="Cancel" />
           </div>
         </div>
       </div>
@@ -116,10 +113,7 @@ const UserCrud: React.FC = () => {
   return (
     <Content {...headerProps}>
       {renderForm()}
-      <UserTable
-        usersList={state.usersList}
-        load={load}
-        remove={remove} />
+      <UserTable usersList={state.usersList} load={load} remove={remove} />
     </Content>
   )
 }
@@ -134,7 +128,6 @@ export default UserCrud
 // import Content from '../../template/Content'
 // import UserTable from '../UserTable'
 // import UserForm from '../UserForm'
-
 
 // type OwnState = {
 //   user: User

@@ -5,7 +5,7 @@ type OwnProps = {
 }
 
 const FormButton: React.FC<OwnProps> = ({ color, click, label }) => (
-  <button className={`btn btn-${color} ml-2`} onClick={() => click}>
+  <button className={`btn btn-${color} ml-2`} onClick={() => click && click()}>
     {label}
   </button>
 )

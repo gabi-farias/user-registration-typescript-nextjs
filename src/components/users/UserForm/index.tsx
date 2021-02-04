@@ -18,13 +18,13 @@ const UserForm: React.FC<OwnProps> = props => {
         <div className="row">
           <FormGroup
             label="Name"
-            user={user}
+            value={user.name}
             updateField={updateField}
             placeholder="Type the user's name..."
           />
           <FormGroup
             label="Email"
-            user={user}
+            value={user.email}
             updateField={updateField}
             placeholder="Type the user's email..."
           />

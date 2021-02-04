@@ -4,15 +4,9 @@ import Content from '../../template/Content'
 import axios from 'axios'
 import UserTable from '../UserTable'
 
-// import { User } from '../../../../util'
+import { User } from '../../../../util'
 
 // import UseRow from '../UserRow'
-
-type User = {
-  id?: number
-  name: string
-  email: string
-}
 
 type OwnState = {
   user: User
@@ -121,34 +115,13 @@ const UserCrud: React.FC = () => {
     })
   }
 
-  const renderRows = () =>
-    state.usersList.map(user => {
-      return (
-        <tr key={user.id}>
-          <td>{user.id}</td>
-          <td>{user.name}</td>
-          <td>{user.email}</td>
-          <td>
-            <button className="btn btn-warning" onClick={() => load(user)}>
-              <i className="fa fa-pencil"></i>
-            </button>
-            <button
-              className="btn btn-danger ml-2"
-              onClick={() => remove(user)}
-            >
-              <i className="fa fa-trash"></i>
-            </button>
-          </td>
-        </tr>
-      )
-    })
-
-  console.log(state.usersList)
-
   return (
     <Content {...headerProps}>
       {renderForm()}
-      <UserTable renderRows={renderRows} />
+      <UserTable
+        usersList={state.usersList}
+        load={load}
+        remove={remove} />
     </Content>
   )
 }

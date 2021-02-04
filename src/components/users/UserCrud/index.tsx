@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-
-import Content from '../../template/Content'
 import axios from 'axios'
-import UserTable from '../UserTable'
 
 import { User } from '../../../../util'
 
-// import UseRow from '../UserRow'
+import Content from '../../template/Content'
+import UserTable from '../UserTable'
+import UserForm from '../UserForm'
+
 
 type OwnState = {
   user: User
@@ -57,55 +57,6 @@ const UserCrud: React.FC = () => {
     setState({ ...state, user })
   }
 
-  const renderForm = () => {
-    return (
-      <div className="form">
-        <div className="row">
-          <div className="col-12 col-md-6">
-            <div className="form-group">
-              <label>Nome</label>
-              <input
-                type="text"
-                className="form-control"
-                name="name"
-                value={state.user.name}
-                onChange={e => updateField(e)}
-                placeholder="Type the user's name..."
-              />
-            </div>
-          </div>
-
-          <div className="col-12 col-md-6">
-            <div className="form-group">
-              <label>E-mail</label>
-              <input
-                type="text"
-                className="form-control"
-                name="email"
-                value={state.user.email}
-                onChange={e => updateField(e)}
-                placeholder="Type the user's email..."
-              />
-            </div>
-          </div>
-        </div>
-
-        <hr />
-        <div className="row">
-          <div className="col-12 d-flex justify-content-end">
-            <button className="btn btn-primary" onClick={() => save()}>
-              Save
-            </button>
-
-            <button className="btn btn-secondary ml-2" onClick={() => clear()}>
-              Cancel
-            </button>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   const load = (user: User) => setState({ ...state, user })
 
   const remove = (user: User) => {
@@ -117,7 +68,11 @@ const UserCrud: React.FC = () => {
 
   return (
     <Content {...headerProps}>
-      {renderForm()}
+      <UserForm
+        user={state.user}
+        updateField={updateField}
+        save={save}
+        clear={clear} />
       <UserTable
         usersList={state.usersList}
         load={load}

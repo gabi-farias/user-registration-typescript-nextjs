@@ -1,6 +1,6 @@
 import React from 'react'
 import { User } from '../../../../util'
-import UserRow from './UserRow'
+import UserRow from '../UserRow'
 
 type OwnProps = {
   usersList: User[]

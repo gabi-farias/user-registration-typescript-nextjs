@@ -1,6 +1,4 @@
 import { User } from '../../../../util'
-import FormGroup from './FormGroup'
-import FormButton from './FormButton'
 
 type OwnProps = {
   user: User
@@ -47,8 +45,12 @@ const UserForm: React.FC<OwnProps> = props => {
       <hr />
       <div className="row">
         <div className="col-12 d-flex justify-content-end">
-          <FormButton color="primary" click={save} label="Save" />
-          <FormButton color="secondary" click={clear} label="Cancel" />
+          <button className="btn btn-primary" onClick={() => save()}>
+            Save
+          </button>
+          <button className="btn btn-secondary ml-2" onClick={() => clear()}>
+            Cancel
+          </button>
         </div>
       </div>
     </div>

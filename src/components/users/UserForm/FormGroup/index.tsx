@@ -1,4 +1,3 @@
-import { User } from '../../../../../util'
 
 type OwnProps = {
   label: string
@@ -19,7 +18,7 @@ const FormGroup: React.FC<OwnProps> = props => {
           className="form-control"
           name={label}
           value={value}
-          onChange={e => updateField(e)}
+          onChange={updateField}
           placeholder={placeholder}
         />
       </div>

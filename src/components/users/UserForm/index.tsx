@@ -4,7 +4,7 @@ import FormButton from './FormButton'
 
 type OwnProps = {
   user: User
-  updateField: (event: React.ChangeEvent<HTMLInputElement>) => void
+  updateField: (e: React.ChangeEvent<HTMLInputElement>) => void
   save: () => void
   clear: () => void
 }

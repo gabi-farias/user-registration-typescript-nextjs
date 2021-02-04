@@ -2,6 +2,7 @@
 type OwnProps = {
   label: string
   value: string
+  e: React.ChangeEvent<HTMLInputElement>
   updateField: (e: React.ChangeEvent<HTMLInputElement>) => void
   placeholder: string
 }
@@ -18,7 +19,7 @@ const FormGroup: React.FC<OwnProps> = props => {
           className="form-control"
           name={label}
           value={value}
-          onChange={updateField}
+          onChange={e => updateField(e)}
           placeholder={placeholder}
         />
       </div>

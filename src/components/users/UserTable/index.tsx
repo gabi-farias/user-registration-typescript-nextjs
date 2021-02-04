@@ -19,15 +19,18 @@ const UserTable: React.FC<OwnProps> = props => {
           <td>{user.name}</td>
           <td>{user.email}</td>
           <td>
-            <button className="btn btn-warning" onClick={() => load(user)}>
-              <i className="fa fa-pencil"></i>
-            </button>
-            <button
-              className="btn btn-danger ml-2"
-              onClick={() => remove(user)}
-            >
-              <i className="fa fa-trash"></i>
-            </button>
+            <TableButton
+              user={user}
+              color="warning"
+              click={load}
+              icon="pencil"
+            />
+            <TableButton
+              user={user}
+              color="danger"
+              click={remove}
+              icon="trash"
+            />
           </td>
         </tr>
       )

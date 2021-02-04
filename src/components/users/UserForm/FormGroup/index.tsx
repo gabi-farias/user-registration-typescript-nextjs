@@ -3,7 +3,7 @@ import { User } from '../../../../../util'
 type OwnProps = {
   label: string
   value: string
-  updateField: (event: React.ChangeEvent<HTMLInputElement>) => void
+  updateField: (e: React.ChangeEvent<HTMLInputElement>) => void
   placeholder: string
 }
 

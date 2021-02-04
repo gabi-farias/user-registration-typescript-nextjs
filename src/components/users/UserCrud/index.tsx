@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
-
-import Content from '../../template/Content'
 import axios from 'axios'
 
-type User = {
-  id?: number
-  name: string
-  email: string
-}
+import { User } from '../../../../util'
+
+import Content from '../../template/Content'
+import UserTable from '../UserTable'
+import UserForm from '../UserForm'
 
 type OwnState = {
   user: User
@@ -115,48 +113,13 @@ const UserCrud: React.FC = () => {
     })
   }
 
-  const renderTable = () => {
-    return (
-      <table className="table mt-4">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>{renderRows()}</tbody>
-      </table>
-    )
-  }
-
-  const renderRows = () =>
-    state.usersList.map(user => {
-      return (
-        <tr key={user.id}>
-          <td>{user.id}</td>
-          <td>{user.name}</td>
-          <td>{user.email}</td>
-          <td>
-            <button className="btn btn-warning" onClick={() => load(user)}>
-              <i className="fa fa-pencil"></i>
-            </button>
-            <button
-              className="btn btn-danger ml-2"
-              onClick={() => remove(user)}
-            >
-              <i className="fa fa-trash"></i>
-            </button>
-          </td>
-        </tr>
-      )
-    })
-
   return (
     <Content {...headerProps}>
       {renderForm()}
-      {renderTable()}
+      <UserTable
+        usersList={state.usersList}
+        load={load}
+        remove={remove} />
     </Content>
   )
 }

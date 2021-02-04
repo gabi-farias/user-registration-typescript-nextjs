@@ -1,4 +1,6 @@
+import React from 'react'
 import { User } from '../../../../util'
+import TableButton from './TableButton'
 
 type OwnProps = {
   usersList: User[]

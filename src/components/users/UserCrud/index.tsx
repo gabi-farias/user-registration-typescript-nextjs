@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react'
 
 import Content from '../../template/Content'
 import axios from 'axios'
+import UserTable from '../UserTable'
+
+// import { User } from '../../../../util'
+
+// import UseRow from '../UserRow'
 
 type User = {
   id?: number
@@ -14,7 +19,8 @@ type OwnState = {
   usersList: User[]
 }
 
-const icon = 'users', title = icon.replace(icon[0], icon[0].toUpperCase())
+const icon = 'users',
+  title = icon.replace(icon[0], icon[0].toUpperCase())
 const headerProps = { icon, title }
 
 const initialState = {
@@ -115,22 +121,6 @@ const UserCrud: React.FC = () => {
     })
   }
 
-  const renderTable = () => {
-    return (
-      <table className="table mt-4">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>{renderRows()}</tbody>
-      </table>
-    )
-  }
-
   const renderRows = () =>
     state.usersList.map(user => {
       return (
@@ -158,7 +148,7 @@ const UserCrud: React.FC = () => {
   return (
     <Content {...headerProps}>
       {renderForm()}
-      {renderTable()}
+      <UserTable renderRows={renderRows} />
     </Content>
   )
 }

@@ -36,7 +36,7 @@ const UserTable: React.FC<OwnProps> = props => {
       <thead>
         <tr>
           <th>ID</th>
-          <th>Nome</th>
+          <th>Name</th>
           <th>Email</th>
           <th>Action</th>
         </tr>

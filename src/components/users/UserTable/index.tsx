@@ -1,12 +1,7 @@
 import React from 'react'
-import { User } from '../../../../util'
 import UserRow from '../UserRow'
 
-type OwnProps = {
-  usersList: User[]
-  load: (user: User) => void
-  remove: (user: User) => void
-}
+import { UserTableProps as OwnProps } from '../../../../util'
 
 const UserTable: React.FC<OwnProps> = ({ usersList, load, remove }) => {
   return (

@@ -17,7 +17,7 @@ const UserForm: React.FC<OwnProps> = props => {
       <div className="row">
         <div className="col-12 col-md-6">
           <div className="form-group">
-            <label>Nome</label>
+            <label>Name</label>
             <input
               type="text"
               className="form-control"
@@ -31,7 +31,7 @@ const UserForm: React.FC<OwnProps> = props => {
 
         <div className="col-12 col-md-6">
           <div className="form-group">
-            <label>E-mail</label>
+            <label>Email</label>
             <input
               type="text"
               className="form-control"

@@ -12,8 +12,6 @@ type OwnProps = {
 const UserForm: React.FC<OwnProps> = props => {
   const { user, updateField, save, clear } = props
 
-  // const getEvent = (e: React.ChangeEvent<HTMLInputElement>) =>  e
-
   return (
     <div className="form">
       <div className="row">

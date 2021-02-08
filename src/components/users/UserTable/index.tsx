@@ -3,7 +3,7 @@ import React from 'react'
 import { UserTableProps as OwnProps } from '../../../../util'
 
 const UserTable: React.FC<OwnProps> = ({ usersList, load, remove }) => {
-  const renderRows = () =>
+  const renderUserRows = () =>
   usersList.map(user => {
     return (
       <tr key={user.id}>
@@ -34,7 +34,7 @@ const UserTable: React.FC<OwnProps> = ({ usersList, load, remove }) => {
           <th>Action</th>
         </tr>
       </thead>
-      <tbody>{renderRows()}</tbody>
+      <tbody>{renderUserRows()}</tbody>
     </table>
   )
 }

@@ -1,5 +1,7 @@
 import { User } from '../../../../util'
 
+import FormGroup from './FormGroup'
+
 type OwnProps = {
   user: User
   updateField: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -13,33 +15,21 @@ const UserForm: React.FC<OwnProps> = props => {
   return (
     <div className="form">
       <div className="row">
-        <div className="col-12 col-md-6">
-          <div className="form-group">
-            <label>Name</label>
-            <input
-              type="text"
-              className="form-control"
-              name="name"
-              value={user.name}
-              onChange={e => updateField(e)}
-              placeholder="Type the user's name..."
-            />
-          </div>
-        </div>
+        <FormGroup
+          label={'Name'}
+          name={'name'}
+          value={user.name}
+          onChange={updateField}
+          placeholder={"Type the user's name..."}
+        />
 
-        <div className="col-12 col-md-6">
-          <div className="form-group">
-            <label>Email</label>
-            <input
-              type="text"
-              className="form-control"
-              name="email"
-              value={user.email}
-              onChange={e => updateField(e)}
-              placeholder="Type the user's email..."
-            />
-          </div>
-        </div>
+        <FormGroup
+          label={'E-mail'}
+          name={'email'}
+          value={user.email}
+          onChange={updateField}
+          placeholder={"Type the user's email..."}
+        />
       </div>
 
       <hr />

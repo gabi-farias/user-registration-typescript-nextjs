@@ -25,7 +25,7 @@ const UserForm: React.FC<OwnProps> = props => {
 
         <FormGroup
           label={'E-mail'}
-          name={'e-mail'}
+          name={'email'}
           value={user.email}
           onChange={updateField}
           placeholder={"Type the user's email..."}

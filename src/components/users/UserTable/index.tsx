@@ -30,7 +30,7 @@ const UserTable: React.FC<OwnProps> = ({ usersList, load, remove }) => {
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>Email</th>
+          <th>E-mail</th>
           <th>Action</th>
         </tr>
       </thead>

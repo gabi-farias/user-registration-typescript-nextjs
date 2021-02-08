@@ -1,15 +1,17 @@
 import Content from '../../template/Content'
 
 const icon = 'home'
+const title = icon.replace(icon[0], icon[0].toUpperCase())
 
-const Main = () =>
-    <Content 
-        icon={icon}
-        title={icon.replace(icon[0], icon[0].toUpperCase())}>
-        <div className='display-4'>Welcome!</div>
-        <hr />
-        <p>System to exemplify the development of a User Registration CRUD
-           with Next Js!</p>
-    </Content>
+const Main = () => (
+  <Content icon={icon} title={title}>
+    <div className="display-4">Welcome!</div>
+    <hr />
+    <p>
+      System to exemplify the development of a 
+      User Registration CRUD with NextJs!
+    </p>
+  </Content>
+)
 
 export default Main

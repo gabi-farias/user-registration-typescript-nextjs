@@ -1,7 +1,7 @@
 import { User } from '../../../../util'
 
-import FormGroup from './FormGroup'
 import FormButtons from './FormButtons'
+import FormGroup from './FormGroup'
 
 type OwnProps = {
   user: User

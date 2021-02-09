@@ -7,7 +7,7 @@ type OwnProps = {
   icon: string
 }
 
-const TableButtons: React.FC<OwnProps> = props => {
+const TableButton: React.FC<OwnProps> = props => {
   const { user, onClick, color, icon } = props
 
   return (
@@ -19,4 +19,4 @@ const TableButtons: React.FC<OwnProps> = props => {
   )
 }
 
-export default TableButtons
+export default TableButton

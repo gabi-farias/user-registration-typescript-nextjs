@@ -1,6 +1,12 @@
 import TableButton from './TableButton'
 
-import { UserTableProps as OwnProps } from '../../../../util'
+import { User} from '../../../../util'
+
+type OwnProps = {
+  users: User[]
+  load: (user: User) => void
+  remove: (user: User) => void
+}
 
 const UserTable: React.FC<OwnProps> = ({ users, load, remove }) => (
   <table className="table mt-4">

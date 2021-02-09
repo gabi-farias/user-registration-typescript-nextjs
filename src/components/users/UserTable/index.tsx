@@ -1,4 +1,4 @@
-import TableButtons from './TableButtons'
+import TableButton from './TableButton'
 
 import { UserTableProps as OwnProps } from '../../../../util'
 
@@ -20,10 +20,19 @@ const UserTable: React.FC<OwnProps> = ({ users, load, remove }) => (
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>
-              <TableButtons
+              <TableButton
                 user={user}
-                load={load}
-                remove={remove} />
+                onClick={load}
+                color="warning"
+                icon="pencil"
+              />
+
+              <TableButton
+                user={user}
+                onClick={remove}
+                color="danger"
+                icon="trash"
+              />
             </td>
           </tr>
         )

@@ -6,14 +6,15 @@ import { User } from '../../../../util'
 import Content from '../../template/Content'
 import UserTable from '../UserTable'
 import UserForm from '../UserForm'
+import { GetServerSideProps } from 'next'
 
 type OwnState = {
   user: User
   usersList: User[]
 }
 
-const icon = 'users',
-  title = icon.replace(icon[0], icon[0].toUpperCase())
+const icon = 'users'
+const title = icon.replace(icon[0], icon[0].toUpperCase())
 const headerProps = { icon, title }
 
 const initialState = {
@@ -71,11 +72,9 @@ const UserCrud: React.FC = () => {
         user={state.user}
         updateField={updateField}
         save={save}
-        clear={clear} />
-      <UserTable
-        usersList={state.usersList}
-        load={load}
-        remove={remove} />
+        clear={clear}
+      />
+      <UserTable usersList={state.usersList} load={load} remove={remove} />
     </Content>
   )
 }

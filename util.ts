@@ -5,7 +5,7 @@ export type User = {
 }
 
 export type UserTableProps = {
-  usersList: User[]
+  users: User[]
   load: (user: User) => void
   remove: (user: User) => void
 }

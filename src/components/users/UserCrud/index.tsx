@@ -6,12 +6,6 @@ import { User } from '../../../../util'
 import Content from '../../template/Content'
 import UserTable from '../UserTable'
 import UserForm from '../UserForm'
-import { GetServerSideProps } from 'next'
-
-type OwnState = {
-  user: User
-  usersList: User[]
-}
 
 const icon = 'users'
 const title = icon.replace(icon[0], icon[0].toUpperCase())
@@ -19,17 +13,20 @@ const headerProps = { icon, title }
 
 const initialState = {
   user: { name: '', email: '' },
-  usersList: []
+  users: []
 }
 
 const baseUrl = 'http://localhost:3001/users'
 
 const UserCrud: React.FC = () => {
-  const [state, setState] = useState<OwnState>({ ...initialState })
+  const [state, setState] = useState<{
+    user: User
+    users: User[]
+  }>({ ...initialState })
 
   useEffect(() => {
     axios(baseUrl).then(resp => {
-      setState({ ...state, usersList: resp.data })
+      setState({ ...state, users: resp.data })
     })
   }, [])
 
@@ -40,15 +37,15 @@ const UserCrud: React.FC = () => {
     const method = user.id ? 'put' : 'post'
     const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
     axios[method](url, user).then(resp => {
-      const usersList = getUpdatedList(resp.data)
-      setState({ ...state, user: initialState.user, usersList })
+      const users = getUpdatedList(resp.data)
+      setState({ ...state, user: initialState.user, users })
     })
   }
 
   const getUpdatedList = (user: User, add = true) => {
-    const usersList = state.usersList.filter(u => u.id !== user.id)
-    if (add) usersList.unshift(user)
-    return usersList
+    const users = state.users.filter(u => u.id !== user.id)
+    if (add) users.unshift(user)
+    return users
   }
 
   const updateField = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,8 +58,8 @@ const UserCrud: React.FC = () => {
 
   const remove = (user: User) => {
     axios.delete(`${baseUrl}/${user.id}`).then(() => {
-      const usersList = getUpdatedList(user, false)
-      setState({ ...state, usersList })
+      const users = getUpdatedList(user, false)
+      setState({ ...state, users })
     })
   }
 
@@ -74,7 +71,7 @@ const UserCrud: React.FC = () => {
         save={save}
         clear={clear}
       />
-      <UserTable usersList={state.usersList} load={load} remove={remove} />
+      <UserTable users={state.users} load={load} remove={remove} />
     </Content>
   )
 }

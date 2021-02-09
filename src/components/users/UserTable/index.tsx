@@ -2,7 +2,7 @@ import TableButtons from './TableButtons'
 
 import { UserTableProps as OwnProps } from '../../../../util'
 
-const UserTable: React.FC<OwnProps> = ({ usersList, load, remove }) => (
+const UserTable: React.FC<OwnProps> = ({ users, load, remove }) => (
   <table className="table mt-4">
     <thead>
       <tr>
@@ -13,7 +13,7 @@ const UserTable: React.FC<OwnProps> = ({ usersList, load, remove }) => (
       </tr>
     </thead>
     <tbody>
-      {usersList.map(user => {
+      {users.map(user => {
         return (
           <tr key={user.id}>
             <td>{user.id}</td>

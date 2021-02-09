@@ -71,7 +71,10 @@ const UserCrud: React.FC = () => {
         save={save}
         clear={clear}
       />
-      <UserTable users={state.users} load={load} remove={remove} />
+      <UserTable
+        users={state.users}
+        load={load}
+        remove={remove} />
     </Content>
   )
 }

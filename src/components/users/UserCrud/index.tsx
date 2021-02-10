@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import { User } from '../../../interfaces/User'
-
 import Content from '../../template/Content'
 import UserTable from '../UserTable'
 import UserForm from '../UserForm'
+
 
 const icon = 'users'
 const title = icon.replace(icon[0], icon[0].toUpperCase())
@@ -71,10 +71,7 @@ const UserCrud: React.FC = () => {
         save={save}
         clear={clear}
       />
-      <UserTable
-        users={state.users}
-        load={load}
-        remove={remove} />
+      <UserTable users={state.users} load={load} remove={remove} />
     </Content>
   )
 }

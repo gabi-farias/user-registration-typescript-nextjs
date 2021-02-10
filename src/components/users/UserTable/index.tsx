@@ -1,6 +1,5 @@
-import TableButton from './TableButton'
-
-import { User} from '../../../../util'
+import { User} from '../User'
+import Button from './Button'
 
 type OwnProps = {
   users: User[]
@@ -26,14 +25,14 @@ const UserTable: React.FC<OwnProps> = ({ users, load, remove }) => (
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>
-              <TableButton
+              <Button
                 user={user}
                 onClick={load}
                 color="warning"
                 icon="pencil"
               />
 
-              <TableButton
+              <Button
                 user={user}
                 onClick={remove}
                 color="danger"

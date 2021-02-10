@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import { User } from '../User'
+import { User } from '../../../interfaces/User'
 
 import Content from '../../template/Content'
 import UserTable from '../UserTable'

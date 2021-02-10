@@ -1,4 +1,4 @@
-import { User} from '../../../interfaces/User'
+import { User} from '../../../interfaces/user'
 import Button from './Button'
 
 type OwnProps = {

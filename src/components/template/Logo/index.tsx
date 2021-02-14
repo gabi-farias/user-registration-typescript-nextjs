@@ -1,6 +1,6 @@
-import Container from './styles'
 import logo from '../../../assets/logo.png'
 import { Link } from 'react-router-dom'
+import Container from './styles'
 
 const Logo: React.FC = () =>
     <Container>

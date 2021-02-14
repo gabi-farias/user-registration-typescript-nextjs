@@ -1,5 +1,5 @@
-import Container from './styles'
 import MenuLink from '../MenuLink'
+import Container from './styles'
 
 const lp1 = 'home', lp2 = 'users'
 

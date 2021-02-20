@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import { User } from '../../../types'
+import { User } from '../../../util'
+
 import Content from '../../template/Content'
 import UserTable from '../UserTable'
 import UserForm from '../UserForm'
-
 
 const icon = 'users'
 const title = icon.replace(icon[0], icon[0].toUpperCase())
@@ -30,7 +30,9 @@ const UserCrud: React.FC = () => {
     })
   }, [])
 
-  const clear = () => setState({ ...state, user: initialState.user })
+  const { user } = initialState
+
+  const clear = () => setState({ ...state, user })
 
   const save = () => {
     const user = state.user
@@ -38,12 +40,13 @@ const UserCrud: React.FC = () => {
     const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
     axios[method](url, user).then(resp => {
       const users = getUpdatedList(resp.data)
-      setState({ ...state, user: initialState.user, users })
+      setState({ ...state, user, users })
     })
   }
 
   const getUpdatedList = (user: User, add = true) => {
-    const users = state.users.filter(u => u.id !== user.id)
+    const { id } = user
+    const users = state.users.filter(user => user.id !== id)
     if (add) users.unshift(user)
     return users
   }
@@ -71,53 +74,11 @@ const UserCrud: React.FC = () => {
         save={save}
         clear={clear}
       />
-      <UserTable users={state.users} load={load} remove={remove} />
+      <UserTable users={state.users}
+        load={load}
+        remove={remove} />
     </Content>
   )
 }
 
 export default UserCrud
-
-// import axios from 'axios'
-// import { GetServerSideProps } from 'next'
-// import { useEffect, useState } from 'react'
-
-// const baseUrl = 'http://localhost:3001/users'
-
-// const initialState = {
-//   user: { name: '', email: '' },
-//   users: []
-// }
-
-// const Home: React.FC<{ users: User[] }> = ({ users }) => {
-//   const [user, setUser] = useState<{
-//     user: User
-//     users: User[]
-// }>({ ...initialState })
-
-//   setUser({ ...user, users })
-
-//   return (
-//     <div>
-//       <h1>Users</h1>
-//       <ul>
-//         {user.users.map(user => (
-//           <li key={user.name}>{user.name}</li>
-//         ))}
-//       </ul>
-//     </div>
-//   )
-// }
-
-// export default Home
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const resp = await axios(baseUrl)
-//   const users: User[] = resp.data
-
-//   return {
-//     props: {
-//       users
-//     }
-//   }
-// }

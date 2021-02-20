@@ -1,4 +1,4 @@
-import { User } from '../../../interfaces/user'
+import { User } from '../../../../util'
 import FormGroup from './FormGroup'
 import Button from './Button'
 

@@ -1,6 +1,3 @@
-import { ReactNode } from 'react'
-import PropTypes from 'prop-types'
-
 import Header from '../Header'
 import Footer from '../Footer'
 import Logo from '../Logo'
@@ -11,25 +8,19 @@ import Container from './styles'
 type OwnProps = {
   icon: string
   title: string
-  children: ReactNode
+  children: React.ReactNode
 }
 
 const Content: React.FC<OwnProps> = ({ icon, title, children }) => (
   <Container>
     <Logo />
     <Nav />
-    <>
-      <Header icon={icon} title={title} />
-      <main className="container-fluid">
-        <div className="p-3 mt-5">{children}</div>
-      </main>
-    </>
+    <Header icon={icon} title={title} />
+    <main className="container-fluid">
+      <div className="p-3 mt-5">{children}</div>
+    </main>
     <Footer />
   </Container>
 )
-
-Content.propTypes = {
-  children: PropTypes.node.isRequired
-}
 
 export default Content

@@ -1,6 +1,5 @@
 import UserCrud from '../components/users/UserCrud'
-import Main from '../components/template/Main'
 
-const Users: React.FC = () => <Main Component={UserCrud} />
+const Users: React.FC = () => <UserCrud />
 
 export default Users

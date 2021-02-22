@@ -12,23 +12,20 @@ const title = icon.replace(icon[0], icon[0].toUpperCase())
 
 const headerProps = { icon, title }
 
-const initialState = {
-  user: { name: '', email: '' },
-  users: []
-}
+const initialUser = { name: '', email: '' }
 
 const baseUrl = 'http://localhost:3001/users'
+
+const user = { ...initialUser }
 
 const UserCrud: React.FC<{ users: User[] }> = ({ users }) => {
   const [state, setState] = useState<{
     user: User
     users: User[]
   }>({
-    user: { ...initialState.user },
+    user,
     users: [...users]
   })
-
-  const { user } = initialState
 
   const clear = () => setState({ ...state, user })
 
@@ -72,7 +69,10 @@ const UserCrud: React.FC<{ users: User[] }> = ({ users }) => {
         save={save}
         clear={clear}
       />
-      <UserTable users={state.users} load={load} remove={remove} />
+      <UserTable
+        users={state.users}
+        load={load}
+        remove={remove} />
     </Content>
   )
 }

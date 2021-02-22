@@ -1,9 +1,9 @@
-import Content from '../../template/Content'
+import Content from '../Content'
 
 const icon = 'home'
 const title = icon.replace(icon[0], icon[0].toUpperCase())
 
-const Main = () => (
+const Main: React.FC = () => (
   <Content icon={icon} title={title}>
     <div className="display-4">Welcome!</div>
     <hr />

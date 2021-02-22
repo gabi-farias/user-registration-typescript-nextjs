@@ -1,12 +1,16 @@
+import Link from 'next/link'
+
 import logo from '../../../assets/logo.png'
-import { Link } from 'react-router-dom'
 import Container from './styles'
 
-const Logo: React.FC = () =>
-    <Container>
-        <Link to='/'>
-            <img src={logo} alt='logo' />
-        </Link>
-    </Container>
+const Logo: React.FC = () => (
+  <Container>
+    <Link href="/">
+      <a>
+        <img src={logo} alt="logo" />
+      </a>
+    </Link>
+  </Container>
+)
 
 export default Logo

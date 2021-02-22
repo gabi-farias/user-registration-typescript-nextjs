@@ -25,7 +25,7 @@ const UserCrud: React.FC<{ users: User[] }> = ({ users }) => {
     users: User[]
   }>({
     user: { ...initialState.user },
-    users
+    users: [...users]
   })
 
   const { user } = initialState
@@ -38,7 +38,7 @@ const UserCrud: React.FC<{ users: User[] }> = ({ users }) => {
     const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
     axios[method](url, user).then(resp => {
       const users = getUpdatedList(resp.data)
-      setState({ ...state, user, users })
+      setState({ user, users })
     })
   }
 

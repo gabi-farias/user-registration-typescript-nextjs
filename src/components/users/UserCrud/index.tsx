@@ -19,17 +19,14 @@ const initialState = {
 
 const baseUrl = 'http://localhost:3001/users'
 
-const UserCrud: React.FC = () => {
+const UserCrud: React.FC<{ users: User[] }> = ({ users }) => {
   const [state, setState] = useState<{
     user: User
     users: User[]
-  }>({ ...initialState })
-
-  useEffect(() => {
-    axios(baseUrl).then(resp => {
-      setState({ ...state, users: resp.data })
-    })
-  }, [])
+  }>({
+    user: { ...initialState.user },
+    users
+  })
 
   const { user } = initialState
 
@@ -75,9 +72,7 @@ const UserCrud: React.FC = () => {
         save={save}
         clear={clear}
       />
-      <UserTable users={state.users}
-        load={load}
-        remove={remove} />
+      <UserTable users={state.users} load={load} remove={remove} />
     </Content>
   )
 }

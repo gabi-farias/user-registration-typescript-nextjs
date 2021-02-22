@@ -1,6 +1,6 @@
 import UserCrud from '../components/users/UserCrud'
-import Menu from '../components/template/Menu'
+import Main from '../components/template/Main'
 
-const Users: React.FC = () => <Menu Component={UserCrud} />
+const Users: React.FC = () => <Main Component={UserCrud} />
 
 export default Users

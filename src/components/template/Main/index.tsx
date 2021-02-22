@@ -1,17 +1,20 @@
-import Content from '../../template/Content'
+import Footer from '../Footer'
+import Logo from '../Logo'
+import Nav from '../Nav'
 
-const icon = 'home'
-const title = icon.replace(icon[0], icon[0].toUpperCase())
+import Container from './styles'
 
-const Main = () => (
-  <Content icon={icon} title={title}>
-    <div className="display-4">Welcome!</div>
-    <hr />
-    <p>
-      System to exemplify the development of a 
-      User Registration CRUD with NextJs!
-    </p>
-  </Content>
+type OwnProps = {
+  Component: React.FC
+}
+
+const Users: React.FC<OwnProps> = ({ Component }) => (
+  <Container>
+    <Logo />
+    <Nav />
+    <Component />
+    <Footer />
+  </Container>
 )
 
-export default Main
+export default Users

@@ -1,8 +1,9 @@
 import { ReactNode } from 'react'
 import PropTypes from 'prop-types'
 
-import Container from './styles'
 import Header from '../Header'
+
+import Container from './styles'
 
 type OwnProps = {
   icon: string

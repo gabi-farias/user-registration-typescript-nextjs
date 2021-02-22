@@ -1,6 +1,22 @@
+import Content from '../components/template/Content'
 import Main from '../components/template/Main'
-import Menu from '../components/template/Menu'
 
-const Home: React.FC = () => <Menu Component={Main} />
+const icon = 'home'
+const title = icon.replace(icon[0], icon[0].toUpperCase())
+
+const Home: React.FC = () => (
+  <Main
+    Component={() => (
+      <Content icon={icon} title={title}>
+        <div className="display-4">Welcome!</div>
+        <hr />
+        <p>
+          System to exemplify the development of a User 
+          Registration CRUD with NextJs!
+        </p>
+      </Content>
+    )}
+  />
+)
 
 export default Home

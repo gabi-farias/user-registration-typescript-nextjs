@@ -9,6 +9,7 @@ import UserForm from '../UserForm'
 
 const icon = 'users'
 const title = icon.replace(icon[0], icon[0].toUpperCase())
+
 const headerProps = { icon, title }
 
 const initialState = {

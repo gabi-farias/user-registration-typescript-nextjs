@@ -5,7 +5,7 @@ const Container = styled('aside')`
   box-shadow: ${({ theme }) => theme.effects.shadow};
   grid-area: menu;
 
-  a {
+  nav a {
     display: block;
     text-decoration: none;
     color: #fff;

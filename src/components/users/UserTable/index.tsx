@@ -1,4 +1,5 @@
-import { User} from '../../../../util'
+import styled from 'styled-components'
+import { User } from '../../../util'
 import Button from './Button'
 
 type OwnProps = {
@@ -11,17 +12,15 @@ const UserTable: React.FC<OwnProps> = ({ users, load, remove }) => (
   <table className="table mt-4">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Name</th>
         <th>E-mail</th>
-        <th>Action</th>
+        <th style={{ transform: 'translateX(5%)' }}>Action</th>
       </tr>
     </thead>
     <tbody>
       {users.map(user => {
         return (
           <tr key={user.id}>
-            <td>{user.id}</td>
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>
@@ -31,7 +30,6 @@ const UserTable: React.FC<OwnProps> = ({ users, load, remove }) => (
                 color="warning"
                 icon="pencil"
               />
-
               <Button
                 user={user}
                 onClick={remove}

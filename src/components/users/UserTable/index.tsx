@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import { User } from '../../../util'
 import Button from './Button'
 

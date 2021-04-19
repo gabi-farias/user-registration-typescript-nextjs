@@ -1,2 +1,2 @@
-.Home
+## Home
 ![](images/home.png)
